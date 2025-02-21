@@ -1,4 +1,4 @@
-# Alpha Flow ML Bot Trading Project
+# AlphaFlow ML Trading Bot Project
 
 A comprehensive **machine learning trading framework** that covers the entire workflow:
 
