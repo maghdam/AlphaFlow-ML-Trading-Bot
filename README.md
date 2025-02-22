@@ -116,7 +116,8 @@ pip install jupyter
    - VectorBT or custom backtesting
 
 ### Live Trading Scripts
-1. Go to `live_trading/` folder and pick the script for your labeling approach:
+1. Navigate to notebooks/, pick a relevant live trading file (e.g., 2_live_trading_multi_bar_classification.ipynb),Go to `live_trading/` folder and pick the script for your labeling approach:
+   - `regression_returns.py`
    - `multi_bar.py`
    - `double_barrier.py`
    - `regime_detection.py`
@@ -126,7 +127,7 @@ pip install jupyter
    python live_trading/double_barrier.py
    ```
 4. The script will:
-   - Load the pipeline (e.g., `final_production_pipeline.pkl`)
+   - Load the pipeline (e.g., `best_rf_mb_pipeline.pkl`)
    - Fetch new bars from MetaTrader 5
    - Predict SHIFTED classes `[0, 1, 2]` => SHIFT back to `[-1, 0, +1]`
    - Place orders if signals = ±1
