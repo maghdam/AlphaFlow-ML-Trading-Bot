@@ -167,12 +167,14 @@ Number of folds: 3
 Loaded best pipeline from 'best_rf_mb_pipeline.pkl'
 
 ### **=== Fold 1 ===**
-
+```
 Train size: 498, Test size: 498
 Fold 1 Accuracy=0.42
 Fold 1 Return=-0.11%, Sharpe=-0.65
+```
 
 Vectorbt stats for Fold 1
+
 ```
 Start                         2024-06-17 04:00:00
 End                           2024-09-08 00:00:00
@@ -212,11 +214,15 @@ dtype: object
 
 ### **=== Fold 2 ===**
 
+```
 Train size: 996, Test size: 498
 Fold 2 Accuracy=0.31
 Fold 2 Return=0.06%, Sharpe=2.22
+```
 
 Vectorbt stats for Fold 2
+
+```
 Start                         2024-09-08 04:00:00
 End                           2024-11-30 00:00:00
 Period                           83 days 00:00:00
@@ -246,7 +252,7 @@ Calmar Ratio                             13.22595
 Omega Ratio                               1.56334
 Sortino Ratio                             3.93952
 dtype: object
-
+```
 
 ![Fold 2 Performance](images/fold2.png)
 
@@ -254,11 +260,15 @@ dtype: object
 
 ### **=== Fold 3 ===**
 
+```
 Train size: 1494, Test size: 501
 Fold 3 Accuracy=0.48
 Fold 3 Return=0.28%, Sharpe=5.04
+```
 
 Vectorbt stats for Fold 3
+
+```
 Start                         2024-11-30 04:00:00
 End                           2025-02-21 12:00:00
 Period                           83 days 12:00:00
@@ -288,5 +298,6 @@ Calmar Ratio                            44.633967
 Omega Ratio                              2.146636
 Sortino Ratio                           10.897234
 dtype: object
+```
 
 ![Fold 3 Performance](images/fold3.png)
