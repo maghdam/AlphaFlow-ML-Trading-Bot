@@ -159,3 +159,131 @@ We share this code for **learning and development/research purposes only**. Noth
 
 ## License
 This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
+
+
+## Backtest Results - 3 Folds
+
+Number of folds: 3
+Loaded best pipeline from 'best_rf_mb_pipeline.pkl'
+
+### **=== Fold 1 ===**
+
+Train size: 498, Test size: 498
+Fold 1 Accuracy=0.42
+Fold 1 Return=-0.11%, Sharpe=-0.65
+
+Vectorbt stats for Fold 1
+Start                         2024-06-17 04:00:00
+End                           2024-09-08 00:00:00
+Period                           83 days 00:00:00
+Start Value                               10000.0
+End Value                             8859.141834
+Total Return [%]                       -11.408582
+Benchmark Return [%]                   -18.492533
+Max Gross Exposure [%]                      100.0
+Total Fees Paid                          50.48857
+Max Drawdown [%]                        23.924092
+Max Drawdown Duration            47 days 04:00:00
+Total Trades                                   13
+Total Closed Trades                            12
+Total Open Trades                               1
+Open Trade PnL                       -1215.304101
+Win Rate [%]                            58.333333
+Best Trade [%]                           2.828353
+Worst Trade [%]                         -3.149463
+Avg Winning Trade [%]                    1.419101
+Avg Losing Trade [%]                     -1.79597
+Avg Winning Trade Duration        5 days 20:00:00
+Avg Losing Trade Duration         3 days 04:48:00
+Profit Factor                            1.081272
+Expectancy                               6.203828
+Sharpe Ratio                            -0.646279
+Calmar Ratio                            -1.726226
+Omega Ratio                              0.953241
+Sortino Ratio                            -0.87177
+dtype: object
+
+!(images/fold1.png)
+
+
+
+### **=== Fold 2 ===**
+
+Train size: 996, Test size: 498
+Fold 2 Accuracy=0.31
+Fold 2 Return=0.06%, Sharpe=2.22
+
+Vectorbt stats for Fold 2
+Start                         2024-09-08 04:00:00
+End                           2024-11-30 00:00:00
+Period                           83 days 00:00:00
+Start Value                               10000.0
+End Value                            10602.511354
+Total Return [%]                         6.025114
+Benchmark Return [%]                    77.078981
+Max Gross Exposure [%]                      100.0
+Total Fees Paid                         44.942643
+Max Drawdown [%]                         2.218465
+Max Drawdown Duration            11 days 20:00:00
+Total Trades                                   11
+Total Closed Trades                            11
+Total Open Trades                               0
+Open Trade PnL                                0.0
+Win Rate [%]                            90.909091
+Best Trade [%]                           2.724661
+Worst Trade [%]                         -2.199349
+Avg Winning Trade [%]                    0.813489
+Avg Losing Trade [%]                    -2.199349
+Avg Winning Trade Duration        0 days 14:24:00
+Avg Losing Trade Duration         0 days 08:00:00
+Profit Factor                            3.740047
+Expectancy                              54.773759
+Sharpe Ratio                              2.22198
+Calmar Ratio                             13.22595
+Omega Ratio                               1.56334
+Sortino Ratio                             3.93952
+dtype: object
+
+
+!(images/fold2.png)
+
+
+
+### **=== Fold 3 ===**
+
+Train size: 1494, Test size: 501
+Fold 3 Accuracy=0.48
+Fold 3 Return=0.28%, Sharpe=5.04
+
+Vectorbt stats for Fold 3
+Start                         2024-11-30 04:00:00
+End                           2025-02-21 12:00:00
+Period                           83 days 12:00:00
+Start Value                               10000.0
+End Value                            12763.727686
+Total Return [%]                        27.637277
+Benchmark Return [%]                     2.244216
+Max Gross Exposure [%]                      100.0
+Total Fees Paid                         40.436536
+Max Drawdown [%]                         4.269683
+Max Drawdown Duration            18 days 12:00:00
+Total Trades                                    9
+Total Closed Trades                             9
+Total Open Trades                               0
+Open Trade PnL                                0.0
+Win Rate [%]                                100.0
+Best Trade [%]                           6.364807
+Worst Trade [%]                          0.039783
+Avg Winning Trade [%]                    2.764773
+Avg Losing Trade [%]                          NaN
+Avg Winning Trade Duration        1 days 14:13:20
+Avg Losing Trade Duration                     NaT
+Profit Factor                                 inf
+Expectancy                             307.080854
+Sharpe Ratio                             5.040252
+Calmar Ratio                            44.633967
+Omega Ratio                              2.146636
+Sortino Ratio                           10.897234
+dtype: object
+
+!(images/fold3.png)
