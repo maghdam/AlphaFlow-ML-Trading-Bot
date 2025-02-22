@@ -116,7 +116,7 @@ pip install jupyter
    - VectorBT or custom backtesting
 
 ### Live Trading Scripts
-1. Navigate to notebooks/, pick a relevant live trading file (e.g., 2_live_trading_multi_bar_classification.ipynb),Go to `live_trading/` folder and pick the script for your labeling approach:
+1. Navigate to notebooks/, pick a relevant live trading file (e.g., 2_live_trading_multi_bar_classification.ipynb), or go to `live_trading/` folder and pick the script for your labeling approach:
    - `regression_returns.py`
    - `multi_bar.py`
    - `double_barrier.py`
