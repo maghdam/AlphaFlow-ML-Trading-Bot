@@ -203,7 +203,9 @@ Omega Ratio                              0.953241
 Sortino Ratio                            -0.87177
 dtype: object
 
-!(images/fold1.png)
+
+![Fold 1 Performance](images/fold1.png)
+
 
 
 
