@@ -33,7 +33,7 @@ This project provides a flexible **template** for you to **create and add your o
 ## Features
 - **MetaTrader 5** data retrieval (`data_loader.py`)
 - **TA** library for feature engineering (`ta.add_all_ta_features`)
-- Multiple **labeling methods**: multi-bar, double-barrier, regime detection, etc.
+- Multiple **labeling methods**: next-bar, multi-bar, double-barrier, regime detection, etc.
 - **Time-based** or **walk-forward** cross-validation to avoid data leakage
 - **RandomizedSearchCV** or **GridSearchCV** for hyperparameter tuning
 - **VectorBT** or custom backtesting scripts for performance evaluation
