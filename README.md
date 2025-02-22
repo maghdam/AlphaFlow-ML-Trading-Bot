@@ -81,7 +81,7 @@ ml_bot_trading/
 
 ### 1. Clone this repository:
 ```bash
-git clone https://github.com/YourUsername/ml_bot_trading.git
+git clone https://github.com/maghdam/AlphaFlow-Trading-Bot.git
 cd ml_bot_trading
 ```
 
