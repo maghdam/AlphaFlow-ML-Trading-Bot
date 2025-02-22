@@ -173,6 +173,7 @@ Fold 1 Accuracy=0.42
 Fold 1 Return=-0.11%, Sharpe=-0.65
 
 Vectorbt stats for Fold 1
+```
 Start                         2024-06-17 04:00:00
 End                           2024-09-08 00:00:00
 Period                           83 days 00:00:00
@@ -202,7 +203,7 @@ Calmar Ratio                            -1.726226
 Omega Ratio                              0.953241
 Sortino Ratio                            -0.87177
 dtype: object
-
+```
 
 ![Fold 1 Performance](images/fold1.png)
 
