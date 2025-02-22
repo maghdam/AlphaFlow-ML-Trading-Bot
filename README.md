@@ -47,7 +47,7 @@ ml_bot_trading/
 │
 ├── features/
 │   ├── feature_engineering.py  # Technical indicators, custom features
-│   ├── labeling.py  # Labeling methods: multi-bar, double-barrier, regime detection
+│   ├── labeling.py  # Labeling methods: next-bar, multi-bar, double-barrier, regime detection
 │
 ├── models/
 │   ├── model_training.py  # Model selection, hyperparam tuning
