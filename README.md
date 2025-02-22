@@ -247,7 +247,7 @@ Sortino Ratio                             3.93952
 dtype: object
 
 
-!(images/fold2.png)
+![Fold 2 Performance](images/fold2.png)
 
 
 
@@ -288,4 +288,4 @@ Omega Ratio                              2.146636
 Sortino Ratio                           10.897234
 dtype: object
 
-!(images/fold3.png)
+![Fold 3 Performance](images/fold3.png)
