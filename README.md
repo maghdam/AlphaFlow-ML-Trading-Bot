@@ -58,6 +58,7 @@ ml_bot_trading/
 │   ├── vectorbt_backtest.py  # VectorBT-based backtesting template
 │
 ├── live_trading/
+│   ├── regression_returns.py  # Live trading script for regression returns
 │   ├── multi_bar.py  # Live trading script for multi-bar classification
 │   ├── double_barrier.py  # Live trading script for double-barrier labeling
 │   ├── regime_detection.py  # Live trading script for regime detection

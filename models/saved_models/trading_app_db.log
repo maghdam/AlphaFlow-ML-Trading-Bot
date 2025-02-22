@@ -1,0 +1,5 @@
+2025-02-22 09:14:18 ERROR:Failed to initialize MetaTrader 5
+2025-02-22 09:14:20 INFO:Loaded pipeline from models/saved_models/best_rf_db_pipeline.pkl
+2025-02-22 09:14:20 INFO:Loaded pipeline from models/saved_models/best_rf_db_pipeline.pkl
+2025-02-22 09:14:20 INFO:Checking market status...
+2025-02-22 09:14:20 INFO:Market is closed. No actions performed.

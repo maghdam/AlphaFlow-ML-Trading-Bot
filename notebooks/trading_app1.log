@@ -1,4 +1,0 @@
-2025-02-18 19:30:57 ERROR:An error occurred: name 'joblib' is not defined
-2025-02-18 19:30:58 INFO:MetaTrader 5 shutdown completed.
-2025-02-18 19:31:32 ERROR:An error occurred: [Errno 2] No such file or directory: 'saved_models/final_production_pipeline.pkl'
-2025-02-18 19:31:32 INFO:MetaTrader 5 shutdown completed.
