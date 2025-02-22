@@ -136,6 +136,7 @@ pip install jupyter
 - **`data/data_loader.py`**: Connects to MetaTrader 5, fetches bars with `copy_rates_from_pos`.
 - **`features/feature_engineering.py`**: Uses the **TA** library and additional custom features (spreads, autocorrelation, etc.).
 - **`features/labeling.py`**:
+  - `calculate_future_return(...)`
   - `create_labels_multi_bar(...)`
   - `create_labels_double_barrier(...)`
   - `create_labels_regime_detection(...)`
