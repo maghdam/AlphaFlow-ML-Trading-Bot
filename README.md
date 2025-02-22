@@ -124,7 +124,7 @@ pip install jupyter
 2. Adjust **MetaTrader 5 credentials** (login, server, password) in the script.
 3. Run from terminal:
    ```bash
-   python live_trading/double_barrier.py
+   python live_trading/multi_bar.py.py
    ```
 4. The script will:
    - Load the pipeline (e.g., `best_rf_mb_pipeline.pkl`)
