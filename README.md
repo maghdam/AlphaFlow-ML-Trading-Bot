@@ -87,7 +87,7 @@ cd ml_bot_trading
 
 ### 2. Create and activate a Python environment (conda or venv):
 ```bash
-conda create -n ml_trading python=3.9
+conda create -n ml_trading python>=3.9
 conda activate ml_trading
 ```
 
