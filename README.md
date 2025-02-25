@@ -1,10 +1,10 @@
-# AlphaFlow ML Trading Bot Project
+# AlphaFlow ML & DL Trading Bot Project
 
-A comprehensive **machine learning trading framework** that covers the entire workflow:
+A comprehensive **machine learning and deep learning trading framework** that covers the entire workflow:
 
 1. **Data loading** from MetaTrader 5
 2. **Feature engineering** (technical indicators, custom features, labeling)
-3. **Model training** (RandomForest, XGBoost, LightGBM, etc.)
+3. **Model training** (RandomForest, XGBoost, LightGBM, deep learning models, etc.)
 4. **Hyperparameter tuning** (RandomizedSearchCV or GridSearchCV)
 5. **Time-based / walk-forward cross-validation**
 6. **Backtesting** (VectorBT or simple custom code)
@@ -63,7 +63,7 @@ ml_bot_trading/
 │   ├── double_barrier.py  # Live trading script for double-barrier labeling
 │   ├── regime_detection.py  # Live trading script for regime detection
 │
-├── notebooks/
+├── ml_notebooks/
 │   ├── 01_backtests_regression_returns.ipynb
 │   ├── 01_live_trading_regression_returns.ipynb
 │   ├── 02_backtests_multi_bar_classification.ipynb
@@ -73,6 +73,10 @@ ml_bot_trading/
 │   ├── 04_backtests_regime_detection.ipynb
 │   ├── 04_live_trading_regime_detection.ipynb
 │
+├── dl_notebooks/
+│   ├── 01_backtests_regression_returns dl.ipynb
+│   ├── 01_live_trading_regression_returns dl.ipynb
+│ 
 ├── requirements.txt
 ├── README.md
 ```
@@ -104,7 +108,7 @@ pip install jupyter
 
 ## Usage
 ### Backtesting Notebooks
-1. Navigate to `notebooks/`, pick a relevant file (e.g., `02_backtests_multi_bar_classification.ipynb`), and run it:
+1. Navigate to `ml_notebooks/` or `dl_notebooks/`, pick a relevant file (e.g., `02_backtests_multi_bar_classification.ipynb`), and run it:
    ```bash
    jupyter notebook
    ```
@@ -116,7 +120,7 @@ pip install jupyter
    - VectorBT or custom backtesting
 
 ### Live Trading Scripts
-1. Navigate to notebooks/, pick a relevant live trading file (e.g., 2_live_trading_multi_bar_classification.ipynb), or go to `live_trading/` folder and pick the script for your labeling approach:
+1. Navigate to `ml_notebooks/` or `dl_notebooks/`, pick a relevant live trading file (e.g., 2_live_trading_multi_bar_classification.ipynb), or go to `live_trading/` folder and pick the script for your labeling approach:
    - `regression_returns.py`
    - `multi_bar.py`
    - `double_barrier.py`
