@@ -1,11 +1,17 @@
 # LIVE TRADING CODE FOR MULTI-BAR CLASSIFICATION
 
+import sys
 import os
+import warnings
 from pathlib import Path
 
-# Assuming the notebook is inside the notebooks folder, set the project root as one level up.
-project_root = Path.cwd().parent
-os.chdir(project_root)
+# ---------------------------------------------------------------------------
+# 1) SET PROJECT ROOT AND UPDATE PATH/WORKING DIRECTORY
+# ---------------------------------------------------------------------------
+project_root = Path.cwd().parent.parent  # Adjust if your notebook is in notebooks/time_series
+sys.path.append(str(project_root))
+os.chdir(str(project_root))
+warnings.filterwarnings("ignore")
 
 
 import warnings

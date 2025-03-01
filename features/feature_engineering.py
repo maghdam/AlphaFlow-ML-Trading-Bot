@@ -5,6 +5,12 @@ import pandas as pd
 import math
 import ta
 from statsmodels.tsa.stattools import adfuller
+from scipy.fftpack import fft
+from sklearn.preprocessing import StandardScaler
+
+
+
+
 
 # --------------------------------------------------------------------
 # 1) TA-LIB FEATURES (add_all_ta_features)
@@ -39,17 +45,19 @@ def spread(df: pd.DataFrame) -> pd.DataFrame:
     df_copy["spread"] = df_copy["high"] - df_copy["low"]
     return df_copy
 
-def auto_corr(df: pd.DataFrame, col: str, n: int = 50, lag: int = 1) -> pd.DataFrame:
+def auto_corr_multi(df: pd.DataFrame, col: str, n: int = 50, lags: list = [1, 3, 5, 10]) -> pd.DataFrame:
     """
-    Rolling autocorrelation for a given column.
+    Computes rolling autocorrelation for multiple lags.
     """
     df_copy = df.copy()
-    df_copy[f"autocorr_{lag}"] = (
-        df_copy[col]
-        .rolling(window=n, min_periods=n)
-        .apply(lambda x: x.autocorr(lag=lag), raw=False)
-    )
+    for lag in lags:
+        df_copy[f"autocorr_{lag}"] = (
+            df_copy[col]
+            .rolling(window=n, min_periods=n)
+            .apply(lambda x: x.autocorr(lag=lag), raw=False)
+        )
     return df_copy
+
 
 def candle_information(df: pd.DataFrame) -> pd.DataFrame:
     """
@@ -240,18 +248,33 @@ def displacement_detection(
 # --------------------------------------------------------------------
 # 6) ROLLING ADF (Stationarity)
 # --------------------------------------------------------------------
-def rolling_adf(df: pd.DataFrame, col: str = 'close', window_size: int = 50) -> pd.DataFrame:
+def rolling_adf_with_flag(df: pd.DataFrame, col: str = 'close', window_size: int = 50, p_value_threshold=0.05) -> pd.DataFrame:
+    """
+    Computes rolling ADF test and adds a stationarity flag (1=stationary, 0=non-stationary).
+    """
     df_copy = df.copy()
     adf_stat = pd.Series(dtype="float64", index=df_copy.index)
+    adf_pval = pd.Series(dtype="float64", index=df_copy.index)
+    stationarity_flag = pd.Series(dtype="int", index=df_copy.index)
+
     for i in range(window_size, len(df_copy)):
         slice_data = df_copy[col].iloc[i - window_size : i].values
         try:
             result = adfuller(slice_data, autolag='AIC')
             adf_stat.iloc[i] = result[0]
+            adf_pval.iloc[i] = result[1]
+            stationarity_flag.iloc[i] = 1 if result[1] < p_value_threshold else 0
         except:
             adf_stat.iloc[i] = np.nan
+            adf_pval.iloc[i] = np.nan
+            stationarity_flag.iloc[i] = np.nan
+
     df_copy['rolling_adf_stat'] = adf_stat
+    df_copy['rolling_adf_pval'] = adf_pval
+    df_copy['stationary_flag'] = stationarity_flag  # 1 = stationary, 0 = non-stationary
+
     return df_copy
+
 
 # --------------------------------------------------------------------
 # 7) DOUBLE-BARRIER LABEL
@@ -295,18 +318,64 @@ def future_DC_market_regime(df: pd.DataFrame, threshold: float = 0.03, horizon: 
     return df_copy
 
 
-# 9) SINGLE PIPELINE EXAMPLE
+
+# --------------------------------------------------------------------
+# 9) Introduce Fourier & Wavelet Features for Cyclical Pattern Recognition
+# --------------------------------------------------------------------
+
+def add_fourier_features(df: pd.DataFrame, col: str = "close", n_components: int = 5) -> pd.DataFrame:
+    """
+    Extracts the top 'n_components' Fourier coefficients from price data.
+    """
+    fft_vals = np.abs(fft(df[col].values))
+    for i in range(1, n_components + 1):
+        df[f'fft_comp_{i}'] = fft_vals[i]
+    return df
+
+
+# --------------------------------------------------------------------
+# 10) Optimize ADF Test for Model Selection
+# --------------------------------------------------------------------
+
+def apply_differencing_if_needed(df: pd.DataFrame, col: str = "close", threshold: float = 0.05) -> pd.DataFrame:
+    """
+    If ADF p-value > threshold (non-stationary), apply first differencing.
+    """
+    if df['rolling_adf_pval'].iloc[-1] > threshold:  # Check last rolling p-value
+        df[f"{col}_diff"] = df[col] - df[col].shift(1)  # First differencing
+    return df.dropna()
+
+
+
+# --------------------------------------------------------------------
+# 11) Normalize Feature Distributions (Scaling)
+# --------------------------------------------------------------------
+def scale_features(df: pd.DataFrame, cols_to_scale: list) -> pd.DataFrame:
+    scaler = StandardScaler()
+    df[cols_to_scale] = scaler.fit_transform(df[cols_to_scale])
+    return df
+
+
+
+# 12) SINGLE PIPELINE EXAMPLE
 # --------------------------------------------------------------------
 def create_features(df: pd.DataFrame, col: str = "close", window_size: int = 30) -> pd.DataFrame:
     """
-    Example pipeline that calls multiple feature functions in sequence.
-    Adjust as needed.
+    Optimized pipeline integrating TA, autocorrelation, stationarity, Fourier transform, and normalization.
     """
-    df = add_all_ta_features(df)           # Adds a wide range of TA indicators
+    df = add_all_ta_features(df)          # Adds TA indicators
     df = spread(df)                        # Adds 'spread'
-    df = auto_corr(df, col, n=50, lag=1)   # Rolling autocorr
-    df = log_transform(df, col, 5)         # Log transform + ret_log_5
+    df = auto_corr_multi(df, col='close')  # Multi-lag autocorrelation
+    df = rolling_adf_with_flag(df)         # ADF with stationarity flag
+    
+    df = log_transform(df, col, 5)         # Log transform
     df = moving_yang_zhang_estimator(df, window_size)
     df = moving_parkinson_estimator(df, window_size)
-    # You could add candle_information, displacement_detection, etc. here
+    
+    df = add_fourier_features(df, col="close")  # Fourier Transform for cyclic detection
+    df = apply_differencing_if_needed(df, col="close")  # Ensure stationarity
+
+    # Normalize all numeric features
+    df = scale_features(df, df.select_dtypes(include=[np.number]).columns.tolist())
+
     return df
