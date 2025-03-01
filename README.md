@@ -107,7 +107,7 @@ conda activate ml_trading
 ```bash
 pip install -r requirements.txt
 ```
-- Make sure you have **MetaTrader5** installed if you plan to do live trading.
+- Make sure you have **MetaTrader5** installed [IC Markets MT5](https://www.icmarkets.com/global/en/forex-trading-platform-metatrader/metatrader-5).
 
 ### 4. (Optional) Install Jupyter Notebook:
 ```bash
