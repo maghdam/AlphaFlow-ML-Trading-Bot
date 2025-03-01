@@ -41,6 +41,8 @@ This project provides a flexible **template** for you to **create and add your o
 
 ## Repository Structure
 ```bash
+# ML Bot Trading Repository Structure
+
 ml_bot_trading/
 ├── data/
 │   ├── data_loader.py  # MetaTrader 5 data retrieval
@@ -63,20 +65,26 @@ ml_bot_trading/
 │   ├── double_barrier.py  # Live trading script for double-barrier labeling
 │   ├── regime_detection.py  # Live trading script for regime detection
 │
-├── ml_notebooks/
-│   ├── 01_backtests_regression_returns.ipynb
-│   ├── 01_live_trading_regression_returns.ipynb
-│   ├── 02_backtests_multi_bar_classification.ipynb
-│   ├── 02_live_trading_multi_bar.ipynb
-│   ├── 03_backtests_double_barrier.ipynb
-│   ├── 03_live_trading_double_barrier.ipynb
-│   ├── 04_backtests_regime_detection.ipynb
-│   ├── 04_live_trading_regime_detection.ipynb
+├── notebooks/
+│   ├── dl_notebooks/
+│   │   ├── 00_eda_visualization.ipynb
+│   │   ├── 01_backtests_regression_returns_dl.ipynb
+│   │   ├── 01_live_trading_regression_returns_dl.ipynb
+│   │   ├── 02_time_series_arima_sarima_var_lstmprice.ipynb
+│   │
+│   ├── eda_notebooks/
+│   │   ├── 00_eda_visualization.ipynb
+│   │
+│   ├── ml_notebooks/
+│   │   ├── 01_backtests_regression_returns.ipynb
+│   │   ├── 01_live_trading_regression_returns.ipynb
+│   │   ├── 02_backtests_multi_bar_classification.ipynb
+│   │   ├── 02_live_trading_multi_bar_classification.ipynb
+│   │   ├── 03_backtests_double_barrier_labeling.ipynb
+│   │   ├── 03_live_trading_double_barrier_labeling.ipynb
+│   │   ├── 04_backtests_regime_detection.ipynb
+│   │   ├── 04_live_trading_regime_detection.ipynb
 │
-├── dl_notebooks/
-│   ├── 01_backtests_regression_returns dl.ipynb
-│   ├── 01_live_trading_regression_returns dl.ipynb
-│ 
 ├── requirements.txt
 ├── README.md
 ```
